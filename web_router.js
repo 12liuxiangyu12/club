@@ -1,11 +1,13 @@
 var express = require("express");
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var config = require('./config.js');
 
 var api = require("./api/v1/route.js");
 var index = require("./controllers/index.js");
+var article = require("./controllers/article.js");
 
-var sessions = session({ secret: "abc",
+var sessions = session({ secret: config.session_secret,
                         cookie: {maxAge:15*24*60*60*1000},
                         resave: true,
                         saveUninitialized: true
@@ -17,6 +19,7 @@ var sessions = session({ secret: "abc",
   });
   var jsonParser = bodyParser.json( {limit: "10mb" })
 
-  router.get("/", [index.index]);
+  router.get(["/","tab"], [index.index]);
 
+  router.get("/t", [article.index]);
 module.exports = router;
