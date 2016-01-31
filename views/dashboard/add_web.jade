@@ -1,0 +1,17 @@
+.sep20
+.box
+  .cell
+    form(method="post", action="/api/v1/addWeb")
+      table(width="100%")
+        tbody
+          tr
+            td(width="120", align="right") url
+            td(width="auto", align="left")
+              input(type="text", name="url")
+          tr
+            td(width="120", align="right") introduce
+            td(width="auto", align="left")
+              textarea(type="text", name="introduce")
+          tr
+            td
+              input(type="submit", value="提交")

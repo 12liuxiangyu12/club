@@ -12,14 +12,19 @@ var sessions = session({ secret: config.session_secret,
                         resave: true,
                         saveUninitialized: true
                       });
-  var router = express.Router();
-  var urlencodedParser = bodyParser.urlencoded({ 
-    extended: true,
-    limit: "10mb"
-  });
-  var jsonParser = bodyParser.json( {limit: "10mb" })
+var router = express.Router();
+var urlencodedParser = bodyParser.urlencoded({ 
+  extended: true,
+  limit: "10mb"
+});
+var jsonParser = bodyParser.json( {limit: "10mb" })
 
-  router.get(["/","tab"], [index.index]);
+router.get(["/","tab"], [index.index]);
 
-  router.get("/t", [article.index]);
+router.get(["/add_web"], [index.add_web]);
+
+router.get("/t", [article.index]);
+
+
+router.all("/api/v1/*", [urlencodedParser, jsonParser, api]);
 module.exports = router;

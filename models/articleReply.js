@@ -1,26 +1,25 @@
 "use strict";
 
-var tableName = "mockapis";
-
+var tableName = "articleReply";
 
 module.exports = function(sequelize, DataTypes) {
   var mockDB = sequelize.define(tableName, {
-    case_id: {
-      type: DataTypes.INTEGER
-    },
-    api: {
-      type: DataTypes.TEXT
+    author: {
+      type: DataTypes.CHAR
     },
     content: {
       type: DataTypes.TEXT
     },
-    updatetime: {
+    createAt: {
       type: DataTypes.DATE
     },
+    articleID: {
+      type: DataTypes.INTEGER
+    }
   }, {
     classMethods: {
     },
-
+    freezeTableName: true,
     timestamps: false
   });
 

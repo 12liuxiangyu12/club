@@ -191,6 +191,13 @@ a.count_livid:hover {
     text-decoration: none;
 }
 
+table.like td:hover {
+    background-color: #F3F1F1;
+}
+
+table.like td:active {
+    background-color: #969cb1;
+}
 .cell {
     padding: 10px;
     font-size: 12px;
@@ -219,6 +226,10 @@ a.count_livid:hover {
   color: #ccc;
 }
 
+.web_img {
+  width: 300px;
+  height: 300px;
+}
 .reply_content {
     font-size: 14px;
     line-height: 1.6;

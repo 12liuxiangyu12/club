@@ -1,28 +1,28 @@
 "use strict";
 
-var tableName = "mockdata";
+var tableName = "website";
 
 module.exports = function(sequelize, DataTypes) {
   var mockDB = sequelize.define(tableName, {
-    name: {
+    url: {
+      type: DataTypes.CHAR
+    },
+    pic: {
+      type: DataTypes.CHAR
+    },
+    introduce: {
       type: DataTypes.TEXT
     },
-    api: {
-      type: DataTypes.TEXT
+    createAt: {
+      type: DataTypes.DATE
     },
-    urlscheme: {
-      type: DataTypes.TEXT
-    },
-    group: {
+    like_count: {
       type: DataTypes.INTEGER
-    },
-    path: {
-      type: DataTypes.TEXT
     }
   }, {
     classMethods: {
     },
-
+    freezeTableName: true,
     timestamps: false
   });
 

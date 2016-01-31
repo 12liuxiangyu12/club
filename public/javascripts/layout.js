@@ -1,4 +1,3 @@
-document.title = "Spider";
 (function($){
 $.fn.autoTextarea = function(options) {
 var defaults={
