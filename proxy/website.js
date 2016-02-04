@@ -4,16 +4,21 @@ var models  = require('../models');
 var website = models.website;
 
 var method = {
+  getWebByTimestamp: function(timestamp, callback){
+    website.find({ where: {
+      timestamp: timestamp
+    } }).then(function(result){
+      callback(true, result);
+    });
+  },
   getRandomWeb: function(callback){
     website.findAll({ where: {
       url: { ne: null },
       pic: { ne: null }
       } }).then(function(result){
       len = result.length;
-      console.log(len);
       if(len > 0){
         var index = Math.ceil(Math.random()*len) - 1;
-        console.log(index);
       }
       typeof index !== 'undefined' ? callback(true, result[index]) : callback(false, "");
     });
@@ -21,13 +26,17 @@ var method = {
   setWeb: function(web){
     var url = web.url;
     var introduce = web.introduce;
+    var title = web.title
     var like_count = 0;
     var time = new Date();
+    var timestamp = Math.round(time.getTime()/1000).toString();
     website.create({
       url: url,
       introduce: introduce,
       like_count: 0,
-      createAt: time
+      createAt: time,
+      title: title,
+      timestamp: timestamp
     }).then(function(web){
       console.log('add website');
     });

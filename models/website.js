@@ -10,6 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     pic: {
       type: DataTypes.CHAR
     },
+    title: {
+      type: DataTypes.CHAR
+    },
     introduce: {
       type: DataTypes.TEXT
     },
@@ -18,6 +21,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     like_count: {
       type: DataTypes.INTEGER
+    },
+    timestamp: {
+      type: DataTypes.STRING
     }
   }, {
     classMethods: {

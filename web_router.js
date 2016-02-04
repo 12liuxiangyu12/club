@@ -21,6 +21,8 @@ var jsonParser = bodyParser.json( {limit: "10mb" })
 
 router.get(["/","tab"], [index.index]);
 
+router.get(["/article/:timestamp"], [index.article]);
+
 router.get(["/add_web"], [index.add_web]);
 
 router.get("/t", [article.index]);

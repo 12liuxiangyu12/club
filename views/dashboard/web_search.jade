@@ -5,16 +5,15 @@
       tbody
         tr
           td(width="48", valign="top", align="center")
-            a(id="web_url", target="_blank")
-              img.web_img(id="pic")
+            a(id="web_url", target="_blank", href="#{web.url}")
+              img.web_img(id="pic", src="#{web.pic}")
           td(width="10")
           td(width="auto", valign="top")
             span.item_title
-              a(id="introduce")
+              a(id="introduce") #{web.introduce}
   table.like(width="100%", height="50px")
     tr
       td(width="50%", align="center")
-        span 喜欢
-      td(width="50%", align="center", onclick='getRandomWeb()')
+      td(width="50%", align="center", onclick='redirect("#{next}")')
         span 换一个
     script(src="/javascripts/dashboard/web_search.js")

@@ -2,9 +2,15 @@ doctype html
 
 html(lang="zb-CH")
   head
+    script(src="/javascripts/head.js")
+    link(rel="icon", type="image/png" href="/img/icon.png")
     link(href="/stylesheets/basic/style.css", rel="stylesheet")
     script(src="/libs/jquery-2.0.3.min.js")
     meta(charset="UTF-8")
+    -if (title)
+      title #{title}
+    -else
+      title V2EW
   body
     include ./basic/top
     include ./basic/wrapper

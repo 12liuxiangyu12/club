@@ -19,7 +19,6 @@ handler['setPicForWeb'] = function(req, res, next){
 handler['getNoPicWeb'] = function(req, res, next){
   var js = [];
   website_db.getNoPicWeb(function(isSuccess, result){
-    console.log(result);
     res.json(result);
   });
 }
@@ -33,12 +32,14 @@ handler['addWeb'] = function(req, res, next){
   var postData = req.body;
   var url = postData.url;
   var introduce = postData.introduce;
+  var title = postData.title;
   var web = {
     url: url,
+    title: title,
     introduce: introduce
   };
   website_db.setWeb(web);
-  res.redirect("/addWeb");
+  res.redirect("/add_web");
 }
 
 handler['getRandomWeb'] = function(req, res, next){
@@ -49,7 +50,6 @@ handler['getRandomWeb'] = function(req, res, next){
       pic: ""
     }
     if(isSuccess){
-      console.log(web);
       web_temp.url = web.url;
       web_temp.introduce = web.introduce;
       web_temp.pic = web.pic;
