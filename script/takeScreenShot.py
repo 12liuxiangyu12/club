@@ -1,6 +1,7 @@
 from selenium import webdriver
 import urllib
 import json
+import platform
 
 api_no_pic = "http://localhost:5555/api/v1/getNoPicWeb"
 api_insert_pic = "http://localhost:5555/api/v1/setPicForWeb?"
