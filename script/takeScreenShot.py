@@ -11,6 +11,10 @@ insert_list = []
 def take_screen_shot(insert_list):
     if not insert_list:
         return
+    if 'Linux' in platform.platform():
+        from pyvirtualdisplay import Display
+        display = Display(visible=0, size=(800, 800))
+        display.start()
     driver = webdriver.Chrome()
     try:
         driver.maximize_window()
@@ -23,6 +27,7 @@ def take_screen_shot(insert_list):
     except Exception:
         print Exception
     finally:
+        display.stop()
         driver.close()
 
 for web in web_list:
