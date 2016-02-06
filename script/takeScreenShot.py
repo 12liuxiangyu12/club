@@ -2,6 +2,7 @@ from selenium import webdriver
 import urllib
 import json
 import platform
+from time import sleep
 
 api_no_pic = "http://localhost:5555/api/v1/getNoPicWeb"
 api_insert_pic = "http://localhost:5555/api/v1/setPicForWeb?"
@@ -22,14 +23,16 @@ def take_screen_shot(insert_list):
         for id,url in insert_list:
             driver.get(url)
             path = '/images/' + str(id) + ".png"
+            sleep(5)
             driver.save_screenshot("../public" + path)
             insert_url = api_insert_pic + "id=" + str(id) + "&path=" + path
             urllib.urlopen(insert_url)
     except Exception:
         print Exception
     finally:
-        display.stop()
-        driver.close()
+        driver.quit()
+        if 'Linux' in platform.platform():
+            display.stop()
 
 for web in web_list:
     print web
