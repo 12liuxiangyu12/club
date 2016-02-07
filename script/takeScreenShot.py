@@ -3,6 +3,7 @@ import urllib
 import json
 import platform
 from time import sleep
+import traceback
 
 api_no_pic = "http://localhost:5555/api/v1/getNoPicWeb"
 api_insert_pic = "http://localhost:5555/api/v1/setPicForWeb?"
@@ -27,7 +28,9 @@ def take_screen_shot(insert_list):
             driver.save_screenshot("../public" + path)
             insert_url = api_insert_pic + "id=" + str(id) + "&path=" + path
             urllib.urlopen(insert_url)
-        except Exception:
+        except Exception, e:
+            exstr = traceback.format_exc()
+            print exstr
             print Exception
         finally:
             pass
