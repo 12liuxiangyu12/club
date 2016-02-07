@@ -18,21 +18,22 @@ def take_screen_shot(insert_list):
         display = Display(visible=0, size=(800, 800))
         display.start()
     driver = webdriver.Chrome()
-    try:
-        driver.maximize_window()
-        for id,url in insert_list:
+    driver.maximize_window()
+    for id,url in insert_list:
+        try:
             driver.get(url)
             path = '/images/' + str(id) + ".png"
             sleep(5)
             driver.save_screenshot("../public" + path)
             insert_url = api_insert_pic + "id=" + str(id) + "&path=" + path
             urllib.urlopen(insert_url)
-    except Exception:
-        print Exception
-    finally:
-        driver.quit()
-        if 'Linux' in platform.platform():
-            display.stop()
+        except Exception:
+            print Exception
+        finally:
+            pass
+    driver.quit()
+    if 'Linux' in platform.platform():
+        display.stop()
 
 for web in web_list:
     print web
