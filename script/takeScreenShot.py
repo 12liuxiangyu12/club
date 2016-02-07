@@ -4,6 +4,7 @@ import json
 import platform
 from time import sleep
 import traceback
+import os
 
 api_no_pic = "http://localhost:5555/api/v1/getNoPicWeb"
 api_insert_pic = "http://localhost:5555/api/v1/setPicForWeb?"
@@ -14,6 +15,7 @@ insert_list = []
 def take_screen_shot(insert_list):
     if not insert_list:
         return
+    os.system("killall chrome")
     if 'Linux' in platform.platform():
         from pyvirtualdisplay import Display
         display = Display(visible=0, size=(800, 800))
