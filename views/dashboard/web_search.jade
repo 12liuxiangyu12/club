@@ -5,15 +5,22 @@
       tbody
         tr
           td(width="48", valign="top", align="center")
-            a(id="web_url", target="_blank", href="#{web.url}")
+            a(id="web_url", target="_blank", href="/redirect/#{web.timestamp}")
               img.web_img(id="pic", src="#{web.pic}")
           td(width="10")
           td(width="auto", valign="top")
             span.item_title
-              a(id="introduce") #{web.introduce}
+              a(id="introduce", href="/redirect/#{web.timestamp}", target="_blank") #{web.introduce}
   table.like(width="100%", height="50px")
     tr
-      td(width="50%", align="center")
+      td(width="50%", align="center", onclick='redirect("/like/#{web.timestamp}")')
+        span(align="center")
+          a(href="/like/#{web.timestamp}")
+          case isUserLike
+            when true
+              img(src="/img/like.png")
+            when false
+              img(src="/img/notlike.png")
       td(width="50%", align="center", onclick='redirect("#{next}")')
         span 换一个
     script(src="/javascripts/dashboard/web_search.js")

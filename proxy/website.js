@@ -11,6 +11,13 @@ var method = {
       callback(true, result);
     });
   },
+  getWebById: function(id, callback){
+    website.find({ where: {
+      id: id
+    } }).then(function(result){
+      callback(true, result);
+    });
+  },
   getRandomWeb: function(callback){
     website.findAll({ where: {
       url: { ne: null },
